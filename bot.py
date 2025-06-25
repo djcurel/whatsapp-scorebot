@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 from flask import Flask, request
 import requests
 from twilio.twiml.messaging_response import MessagingResponse
@@ -81,8 +79,6 @@ def responder():
     return str(respuesta)
 
 
->>>>>>> 9996bc235b7928b9f0dba92ca3e81b39c05bf1f5
-=======
 from flask import Flask, request
 import requests
 from twilio.twiml.messaging_response import MessagingResponse
@@ -146,4 +142,3 @@ def responder():
 
 
 
->>>>>>> d97fa14a1472a0357a462659da08ee0b30e63926
