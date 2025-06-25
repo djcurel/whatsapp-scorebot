@@ -48,4 +48,5 @@ def responder():
     else:
         respuesta.message("Hola 👋. Puedes escribir:\n- partidos (para lista completa)\n- marcador [nombre equipo]\nEjemplo: marcador Barcelona")
     return str(respuesta)
+Actualizado para listar partidos del día
 
