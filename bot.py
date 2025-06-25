@@ -35,24 +35,10 @@ def obtener_resumen_equipo(equipo):
     except Exception:
         return "Hubo un error al buscar el marcador."
 
-@app.route("/whatsapp", methods=["POST"])
-def responder():
-    cuerpo = request.values.get('Body', '').strip().lower()
-    respuesta = MessagingResponse()
-
-    if "partidos" in cuerpo or "lista" in cuerpo or cuerpo == "todos":
-        resumen = obtener_partidos_del_dia()
-        respuesta.message(resumen)
-    elif "marcador" in cuerpo:
-        equipo = cuerpo.replace("marcador", "").strip()
-        resumen = obtener_resumen_equipo(equipo)
-        respuesta.message(resumen)
-    else:
-        respuesta.message(
-            "Hola 👋. Puedes escribir:\n"
-            "- partidos (para lista completa)\n"
-            "- marcador [nombre equipo]\n"
-            "Ejemplo: marcador Barcelona"
-        )
-
-    return str(respuesta)
+def obtener_partidos_mundial_clubes():
+    url = "https://www.scorebat.com/video-api/v3/"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        partidos = data.get('response', [])
+        mundial_partidos = [p for p in partidos if "mundial" in p['title'].lower() or "clubes" in p['title'].lower()]
